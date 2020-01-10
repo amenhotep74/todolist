@@ -1,4 +1,22 @@
-let arrayDefault = [];
+// form handling to add new todo
+const form = document.querySelector("#newtodo");
+// when form is submitted
+form.onsubmit = function(e) {
+    console.log(e);
+    e.preventDefault();
+    const { title, description, dueDate, project } = form;
+    addBookToArray(
+        new Todo(
+            title.value,
+            description.value, 
+            dueDate.value,
+            project.value
+        )
+    );
+    renderTodo();
+};
+
+const arrayDefault = [];
 
 // Create a todo object with a constructor 
 function Todo(title, description, dueDate, project) {
@@ -11,8 +29,8 @@ function Todo(title, description, dueDate, project) {
 // add book to array 
 function addBookToArray(Todo) {
     arrayDefault.push(Todo);
+    console.log("Add Todo to array triggered!" + arrayDefault);
 }
-
 
 // create a todo 
 addBookToArray(new Todo("Take Out Trash", "description", "1/3/2019", "default"));
@@ -52,10 +70,16 @@ function createLi(todo, index) {
     li.appendChild(deleteButton);
     return ul;
 }
+// add an object to the array
+function addTodoToArray(todo) {
+    arrayDefault.push(todo);
+}
+
 
 // from the object from the array
 function removeTodoFromArray(index) {
     arrayDefault.splice(index, 1);
+    console.log(arrayDefault);
 }
 
 // When todo delete button is clicked on 
@@ -66,3 +90,16 @@ function deleteTodo(ev) {
 }
 
 renderTodo();
+
+// show form toggle when add todo is clicked
+document.getElementById("addtodo").addEventListener("click", function() {
+    var x = document.getElementById("newtodo");
+    if (x.classList.contains('form-hidden')) {
+        x.classList.add('form-show');
+        x.classList.remove('form-hidden');
+    } 
+    else if (x.classList.contains('form-show')) {
+        x.classList.add('form-hidden');
+        x.classList.remove('form-show');
+    }
+});

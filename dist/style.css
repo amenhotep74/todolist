@@ -1,0 +1,12 @@
+form {
+    border: 1px solid black;
+    width: 40%;
+}
+
+.form-hidden {
+    display: none;
+}
+
+.form-show {
+    display: block;
+}

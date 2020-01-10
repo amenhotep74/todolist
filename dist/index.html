@@ -2,15 +2,25 @@
 <html>
 <head>
    <title>TodoList</title>
+   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+    <button id="addtodo">Add Todo</button>
     <div id="demo">
-        <input type="text"/>
-        <button id="addtodo">Add Todo</button>
     </div>
 <ul id="list">
-
 </ul>
+<form method="POST" class="form-hidden" name="myform" id="newtodo">
+    Todo Name: 
+    <input id="title" name="title" type="text" data-name="title"/><br>
+    Todo description: 
+    <input id="description" name="description" type="text" data-name="description"/><br>
+    Todo duedate: 
+    <input id="dueDate" name="dueDate" type="text" data-name="dueDate"/><br>
+    Project:
+    <input id="project" name="project" type="text" data-name="project"/><br>
+    <input type="submit">
+</form>
 <script src="main.js"></script>
 </body>
 </html>
