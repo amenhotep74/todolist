@@ -5,7 +5,7 @@
    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    
+<div class="container">
     <button id="addtodo">Add Todo</button>
     <br>
     <h3>Default:</h3>
@@ -14,9 +14,9 @@
     <hr>
     <h3>Work:</h3>
     <div id="demo2"></div>
-<ul id="list">
-</ul>
-<form method="POST" class="form-hidden" name="myform" id="newtodo">
+    <ul id="list">
+    </ul>
+    <form method="POST" class="form-hidden" name="myform" id="newtodo">
     Todo Name: 
     <input id="title" name="title" type="text" data-name="title"/><br>
     Todo description: 
@@ -30,7 +30,9 @@
     Work:
     <input type="radio" name="project" value="work"><br>
     <input type="submit">
-</form>
+    </form>
+</div>
 <script src="main.js"></script>
+
 </body>
 </html>

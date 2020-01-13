@@ -52,6 +52,8 @@ function addBookToArray(Todo) {
 // create a todo 
 addBookToArray(new Todo("Take Out Trash", "description", "1/3/2019", "default"));
 addBookToArray(new Todo("Walk Dog", "description", "1/3/2018", "default"));
+// create work todo
+addBookToArray(new Todo("Learn Javascript", "description", "1/3/2019", "work"));
 
 console.log(Todo);
 console.log(arrayDefault);
@@ -79,7 +81,7 @@ function createLi(todo, index) {
 
     // create delete button 
     const deleteButton = document.createElement("button");
-    deleteButton.textContent = "DELETE";
+    deleteButton.textContent = "Complete";
     deleteButton.onclick = () => {
         removeTodoFromArray(index);
         // re render todo
@@ -108,7 +110,7 @@ function deleteTodo(ev) {
     console.log(ev.currentTarget);
 }
 renderTodo();
-
+renderTodoWork();
 // show form toggle when add todo is clicked
 document.getElementById("addtodo").addEventListener("click", function() {
     var x = document.getElementById("newtodo");
@@ -123,7 +125,6 @@ document.getElementById("addtodo").addEventListener("click", function() {
 });
 
 // Work List functions 
-
 function renderTodoWork() {
     var demo = document.querySelector("#demo2");
     demo2.innerHTML = "";
@@ -141,7 +142,7 @@ function createLiWork(todo, index) {
 
     // create delete button 
     const deleteButton = document.createElement("button");
-    deleteButton.textContent = "DELETE";
+    deleteButton.textContent = "Complete";
     deleteButton.onclick = () => {
         removeTodoFromArrayWork(index);
         // re render todo

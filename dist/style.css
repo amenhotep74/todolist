@@ -10,3 +10,22 @@ form {
 .form-show {
     display: block;
 }
+
+button {
+    margin: 0 auto;
+}
+
+li {
+    
+}
+
+.container {
+    width: 500px;
+    clear: both;
+  }
+  
+  .container input {
+    width: 90%;
+    clear: both;
+    text-align: center;
+  }
