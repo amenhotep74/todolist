@@ -1,3 +1,5 @@
+// imports 
+
 // form handling to add new todo
 const form = document.querySelector("#newtodo");
 // when form is submitted
@@ -13,11 +15,20 @@ form.onsubmit = function(e) {
             project.value
         )
     );
-    renderTodo();
+    console.log('test' + project.value);
+    
+    if (project.value === "default") {
+        console.log('output is default');
+        renderTodo();
+    }
+    if (project.value === "work") {
+        console.log('output is work');
+        renderTodoWork();
+    }
 };
 
 const arrayDefault = [];
-
+const arrayWork = [];
 // Create a todo object with a constructor 
 function Todo(title, description, dueDate, project) {
     this.title = title,
@@ -26,10 +37,16 @@ function Todo(title, description, dueDate, project) {
     this.project = project
     
 }
+
 // add book to array 
 function addBookToArray(Todo) {
-    arrayDefault.push(Todo);
-    console.log("Add Todo to array triggered!" + arrayDefault);
+    if (Todo.project == "default") {
+        arrayDefault.push(Todo);
+        console.log("Add Todo to array triggered!" + arrayDefault);
+    } else if (Todo.project == "work"){
+        arrayWork.push(Todo);
+        console.log("Todo added to work array");
+    }
 }
 
 // create a todo 
@@ -49,6 +66,7 @@ function renderTodo() {
     var demo = document.querySelector("#demo");
     demo.innerHTML = "";
     const todos = arrayDefault.map((todo, index) => createLi(todo, index));
+    // if (todo.projec)
     todos.forEach(todo => demo.appendChild(todo));
 }
 
@@ -70,11 +88,12 @@ function createLi(todo, index) {
     li.appendChild(deleteButton);
     return ul;
 }
+
+
 // add an object to the array
 function addTodoToArray(todo) {
     arrayDefault.push(todo);
 }
-
 
 // from the object from the array
 function removeTodoFromArray(index) {
@@ -88,7 +107,6 @@ function deleteTodo(ev) {
     // console.log the element that was clicked
     console.log(ev.currentTarget);
 }
-
 renderTodo();
 
 // show form toggle when add todo is clicked
@@ -103,3 +121,44 @@ document.getElementById("addtodo").addEventListener("click", function() {
         x.classList.remove('form-show');
     }
 });
+
+// Work List functions 
+
+function renderTodoWork() {
+    var demo = document.querySelector("#demo2");
+    demo2.innerHTML = "";
+    const todos = arrayWork.map((todo, index) => createLi(todo, index));
+    // if (todo.projec)
+    todos.forEach(todo => demo2.appendChild(todo));
+}
+
+function createLiWork(todo, index) {
+    const ul = document.createElement('ul');
+    ul.dataset.index = index;
+    const li = document.createElement('li');
+    li.innerHTML = todo.info();
+    ul.appendChild(li);
+
+    // create delete button 
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "DELETE";
+    deleteButton.onclick = () => {
+        removeTodoFromArrayWork(index);
+        // re render todo
+        renderTodoWork();
+    };
+    li.appendChild(deleteButton);
+    return ul;
+}
+
+// remove todo from array work 
+// add an object to the array
+function addTodoToArrayWork(todo) {
+    arrayWork.push(todo);
+}
+
+// from the object from the array
+function removeTodoFromArrayWork(index) {
+    arrayWork.splice(index, 1);
+    console.log(arrayWork);
+}
